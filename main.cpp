@@ -6,28 +6,30 @@ using namespace std;
 
 int main() {
 
-  Thanos T;
-  int n;
-  cout<<"How many monsters?";
-  cin>>n;
+    Thanos T;
 
-  monster *m=new monster[n]; //make sure they have hp
-  
-  ++T;
-  ++T;
-  T.snap_finger(m,n);
+    int n;
+    cout<<"How many monsters?";
+    cin>>n;
 
-  ++T;
-  ++T;
-  T.snap_finger(m,n);
+    monster *m=new monster[n];
 
-  ++T;
-  ++T;
-  T.snap_finger(m,n);
+    ++T;
+    ++T;
+    T.snap_finger(m,n);
 
-  int i;
-  for(i=0;i<n;i++)
-      m[i].display();
-  delete [] m;
+    ++T;
+    ++T;
+    T.snap_finger(m,n);
+
+    ++T;
+    ++T;
+    T.snap_finger(m,n); // kill half
+
+    int i;
+    for(i=0;i<n;i++)
+        m[i].display(); // only alive monsters shown
+
+    delete [] m;
 
 }
