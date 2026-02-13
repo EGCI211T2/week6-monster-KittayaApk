@@ -17,12 +17,11 @@ public:
 
     void display();
     void setHP(int);
-
 };
 
 monster::monster(string n, int h, int p){
     name = n;
-    hp = h;
+    hp = h;      // hp starts at 1 (NOT zero)
     potion = p;
 }
 
@@ -35,8 +34,8 @@ void monster::setHP(int h){
 void monster::display(){
     if(hp==0) return;
 
-    cout << "Name: " << name 
-         << " HP: " << hp 
+    cout << "Name: " << name
+         << " HP: " << hp
          << " Potion: " << potion << endl;
 }
 
