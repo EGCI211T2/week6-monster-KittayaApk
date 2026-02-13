@@ -13,52 +13,23 @@ private:
 
 public:
     monster(string="Anonymous", int=1,int=2);
-    monster (int,int=100);
     ~monster();
 
     void display();
     void setHP(int);
 
-    bool operator>(monster &x);
-    monster& operator--();   
-    monster& operator+=(int);  
 };
-
-monster& monster::operator--(){
-    --hp;
-    return *this;
-}
-
-monster& monster::operator+=(int x){
-    hp += x;
-    return *this;
-}
-
-bool monster::operator>(monster &x){
-    if(hp>x.hp) return true;
-    else return false;
-}
-
-void monster::setHP(int h){
-    hp = h;
-}
-
-monster::~monster(){
-    cout<<name<< " is gone."<<endl;
-}
 
 monster::monster(string n, int h, int p){
     name = n;
     hp = h;
     potion = p;
-    cout << "Monster " << name << " is here" << endl;
 }
 
-monster::monster(int h, int p){
-    name = "Unknown";
+monster::~monster(){}
+
+void monster::setHP(int h){
     hp = h;
-    potion = p;
-    cout << "Monster " << name << " is here" << endl;
 }
 
 void monster::display(){
