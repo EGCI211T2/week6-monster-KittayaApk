@@ -6,6 +6,7 @@ private:
 	int stones;
 	int hp; 
 public:
+  Thanos(int =0,int=1000);
 	/* constructor and destructor */
 	void snap_finger(monster[]); 
 	/* show all hps
