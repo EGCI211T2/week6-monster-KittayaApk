@@ -12,12 +12,12 @@ private:
     int hp,potion;
 
 public:
-    void Attack(monster &);
-    void heal();
     monster(string="Anonymous", int=1,int=2);
     monster (int,int=100);
     ~monster();
+
     void display();
+    void setHP(int);
 
     bool operator>(monster &x);
     monster& operator--();   
@@ -30,13 +30,17 @@ monster& monster::operator--(){
 }
 
 monster& monster::operator+=(int x){
-    this->hp += x;
+    hp += x;
     return *this;
 }
 
 bool monster::operator>(monster &x){
     if(hp>x.hp) return true;
     else return false;
+}
+
+void monster::setHP(int h){
+    hp = h;
 }
 
 monster::~monster(){
@@ -58,6 +62,8 @@ monster::monster(int h, int p){
 }
 
 void monster::display(){
+    if(hp==0) return;
+
     cout << "Name: " << name 
          << " HP: " << hp 
          << " Potion: " << potion << endl;
