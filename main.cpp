@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ctime>
 using namespace std;
 
 #include "monster.h"
@@ -6,30 +7,36 @@ using namespace std;
 
 int main() {
 
+    srand(time(0));   // random seed
+
     Thanos T;
 
     int n;
-    cout<<"How many monsters?";
-    cin>>n;
+    cout << "How many monsters? ";
+    cin >> n;
 
-    monster *m=new monster[n];
+    monster *m = new monster[n];
 
-    ++T;
-    ++T;
-    T.snap_finger(m,n);
+    cout << "\n--- The story begins ---\n";
 
     ++T;
     ++T;
-    T.snap_finger(m,n);
+    T.snap_finger(m, n);
 
     ++T;
     ++T;
-    T.snap_finger(m,n); // kill half
+    T.snap_finger(m, n);
 
-    int i;
-    for(i=0;i<n;i++)
-        m[i].display(); // only alive monsters shown
+    ++T;
+    ++T;
+    T.snap_finger(m, n);   // When stones = 6, kill half
 
-    delete [] m;
+    cout << "\n===== SURVIVORS =====\n";
 
+    for (int i = 0; i < n; i++)
+        m[i].display();   // only alive monsters shown
+
+    delete[] m;
+
+    return 0;
 }

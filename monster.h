@@ -1,72 +1,55 @@
-#ifndef monster_h
-#define monster_h
+#ifndef MONSTER_H
+#define MONSTER_H
 
 #include <iostream>
 #include <string>
+#include <cstdlib>
 using namespace std;
 
-class monster{
+class monster {
 
 private:
     string name;
-    int hp,potion;
+    int hp;
 
 public:
-    monster(string="Anonymous", int=1,int=2);
-    monster (int,int=100);
+    monster();
     ~monster();
 
     void display();
     void setHP(int);
-
-    bool operator>(monster &x);
-    monster& operator--();   
-    monster& operator+=(int);  
+    int getHP();
 };
 
-monster& monster::operator--(){
-    --hp;
-    return *this;
+/* ===== Constructor ===== */
+
+monster::monster() {
+    static int count = 1;
+    name = "Monster_" + to_string(count++);
+
+    hp = rand() % 201 + 100;   // 100 - 300 (never 0)
+
+    cout << name << " is here. HP = " << hp << endl;
 }
 
-monster& monster::operator+=(int x){
-    hp += x;
-    return *this;
+/* ===== Destructor ===== */
+
+monster::~monster() {
+    cout << name << " is gone." << endl;
 }
 
-bool monster::operator>(monster &x){
-    if(hp>x.hp) return true;
-    else return false;
+void monster::display() {
+    if (hp == 0) return;   // do not display dead monsters
+
+    cout << name << " HP = " << hp << endl;
 }
 
-void monster::setHP(int h){
+void monster::setHP(int h) {
     hp = h;
 }
 
-monster::~monster(){
-    cout<<name<< " is gone."<<endl;
-}
-
-monster::monster(string n, int h, int p){
-    name = n;
-    hp = h;
-    potion = p;
-    cout << "Monster " << name << " is here" << endl;
-}
-
-monster::monster(int h, int p){
-    name = "Unknown";
-    hp = h;
-    potion = p;
-    cout << "Monster " << name << " is here" << endl;
-}
-
-void monster::display(){
-    if(hp==0) return;
-
-    cout << "Name: " << name 
-         << " HP: " << hp 
-         << " Potion: " << potion << endl;
+int monster::getHP() {
+    return hp;
 }
 
 #endif
